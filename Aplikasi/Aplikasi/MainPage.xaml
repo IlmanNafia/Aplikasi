@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aplikasi.MainPage">
+
+    <Grid VerticalOptions="FillAndExpand">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label BackgroundColor="Crimson" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+
+        <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,30">
+            <ImageButton Source="Assets/person.png"  WidthRequest="40" HeightRequest="40" 
+                         HorizontalOptions="Start" VerticalOptions="Center" />
+            <Label Text="KONTAK" FontSize="Large" VerticalOptions="Center" TextColor="White"
+                   FontFamily="DenseLetters-nRgDO.otf#Dense Letter"/>
+        </StackLayout>
+
+        <!--Entry-->
+        <StackLayout Orientation="Vertical" Margin="20,20" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <StackLayout>
+                <Entry x:Name="txtId" Placeholder="Id Update and Delete" BackgroundColor="Transparent"
+           TextColor="white" PlaceholderColor="NavajoWhite" Keyboard="Numeric" 
+                       FontFamily="DenseLetters-nRgDO.otf#Dense Letter"></Entry>
+                <Entry x:Name="txtName" Placeholder="Enter Name" BackgroundColor="Transparent"
+           TextColor="white" PlaceholderColor="NavajoWhite" Keyboard="Default" 
+                       FontFamily="DenseLetters-nRgDO.otf#Dense Letter"></Entry>
+                <Entry x:Name="txtPhone" Placeholder="Enter Number" BackgroundColor="Transparent"
+           TextColor="white" PlaceholderColor="NavajoWhite" Keyboard="Telephone" 
+                       FontFamily="DenseLetters-nRgDO.otf#Dense Letter"></Entry>
+            </StackLayout>
+        </StackLayout>
+
+        <!--Frame-->
+        <Frame Grid.Row="1" HasShadow="True" CornerRadius="20" Margin="20,-90,20,0"
+               Padding="0" HeightRequest="100" VerticalOptions="Start" BackgroundColor="White">
+
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Button Add-->
+                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnAdd" Source="Assets/add.png" BackgroundColor="Transparent"
+                                Clicked="BtnAdd_Clicked" WidthRequest="50" HeightRequest="50"/>
+                        <Label Text="Add" TextColor="Crimson" HorizontalOptions="Center"
+                               FontFamily="DenseLetters-nRgDO.otf#Dense Letter" FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Button Read-->
+                <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnRead" Source="Assets/read.png" BackgroundColor="Transparent"
+                                Clicked="BtnRead_Clicked" WidthRequest="50" HeightRequest="50"/>
+                        <Label Text="Read" TextColor="Crimson" HorizontalOptions="Center"
+                               FontFamily="DenseLetters-nRgDO.otf#Dense Letter" FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Button Update-->
+                <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnUpdate" Source="Assets/update.png" BackgroundColor="Transparent"
+                                Clicked="BtnUpdate_Clicked" WidthRequest="50" HeightRequest="50"/>
+                        <Label Text="Update" TextColor="Crimson" HorizontalOptions="Center"
+                               FontFamily="DenseLetters-nRgDO.otf#Dense Letter" FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Button Delete-->
+                <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnDelete" Source="Assets/delete.png" BackgroundColor="Transparent"
+                                Clicked="BtnDelete_Clicked" WidthRequest="50" HeightRequest="50"/>
+                        <Label Text="Delete" TextColor="Crimson" HorizontalOptions="Center"
+                               FontFamily="DenseLetters-nRgDO.otf#Dense Letter" FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+
+        </Frame>
+
+        <!--ListView-->
+        <ListView x:Name="lstPersons" SeparatorVisibility="None"
+                  Grid.Row="3" Margin="20,0" VerticalOptions="FillAndExpand" 
+                  HorizontalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell>
+                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                            <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Id}" TextColor="#757575"
+                                       VerticalOptions="Center" FontAttributes="Bold"
+                                       Grid.Column="0" Margin="5,0,0,0"/>
+
+                                <Label Text="{Binding Name}" TextColor="Crimson"
+                                       VerticalOptions="Center" FontAttributes="Bold"
+                                       Grid.Column="1"/>
+
+                                <Label Text="{Binding Phone}" TextColor="Crimson"
+                                       VerticalOptions="Center" FontAttributes="Bold"
+                                       Grid.Column="2"/>
+
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Aplikasi
+{
+    public class Kontak
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+    }
+}
